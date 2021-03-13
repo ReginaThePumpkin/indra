@@ -5,27 +5,13 @@ var pool = config.pool; // Crear la conexion con los datos almacenados en config
 
 /**
  * [Function that gets all data from an user]
- * @param  idUser  
+ * @param  user_id
  * @return response/error
  */ 
 module.exports.getUser = (request, response) => {
-    var sql = "SELECT * FROM user WHERE idUser = ?"; 
-    console.log("idUser: "+[request.params.idUser]);
-    pool.query(sql, [request.params.idUser], (error, results, fields) => {
-        if (error) response.send(error);
-        else response.json(results);
-    });
-}
-
-/**
- * [Function that gets all the plants of an user]
- * @param  idUser  
- * @return response/error
- */ 
-module.exports.getUserPlants = (request, response) => {
-    var sql = "SELECT * FROM plant WHERE userId = ?"; 
-
-    pool.query(sql, [request.params.userId], (error, results, fields) => {
+    var sql = "SELECT * FROM users WHERE id = ?"; 
+    console.log("user_id: "+[request.params.user_id]);
+    pool.query(sql, [request.params.user_id], (error, results, fields) => {
         if (error) response.send(error);
         else response.json(results);
     });

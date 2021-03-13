@@ -18,7 +18,7 @@ module.exports.usersList = (request, response) => {
 
 // Creando y exportando el metodo para obtener un usuario mediante su ID
 module.exports.getUser = (request, response) => {
-    var sql = "SELECT * FROM users WHERE idUser = ?"; // Declarando query a realizar (mostrar un usuario mediante su ID)
+    var sql = "SELECT * FROM users WHERE id = ?"; // Declarando query a realizar (mostrar un usuario mediante su ID)
 
     // Ejecuntado dicha query
     pool.query(sql, [request.params.idUser], (error, results, fields) => {
@@ -52,7 +52,7 @@ module.exports.insertUser = (request, response) => {
 module.exports.loginUser = (request, response) => {
     var user = request.body; // Esta variable contendra los datos de login del usuario en formato JSON (enviado por el cliente)
 
-    var sql1 = "SELECT * FROM users WHERE username='" + user.username + "'";
+    var sql1 = "SELECT * FROM users WHERE email='" + user.email + "'";
 
     // Ejecuntado query1
     pool.query(sql1, [user], (error1, results1, fields1) => {
@@ -62,7 +62,7 @@ module.exports.loginUser = (request, response) => {
         } else { // En caso contrario obtiene la lista de resultados en formato JSON
             if (results1.length > 0)
             {
-                var sql2 = "SELECT * FROM users WHERE username='" + user.username + "' AND password = '" + user.password + "'";
+                var sql2 = "SELECT * FROM users WHERE email='" + user.email + "' AND password = '" + user.password + "'";
 
                 pool.query(sql2, [user], (error2, results2, fields2) => {
                     if (error2)
@@ -84,19 +84,5 @@ module.exports.loginUser = (request, response) => {
                 response.send(sendJson);
             }
         }
-    });
-}
-
-/**
- * [Function that gets all the plants of an user]
- * @param  idUser  
- * @return response/error
- */ 
-module.exports.getUserPlants = (request, response) => {
-    var sql = "SELECT * FROM plants WHERE idUser = ?"; 
-
-    pool.query(sql, [request.params.idUser], (error, results, fields) => {
-        if (error) response.send(error);
-        else response.json(results);
     });
 }
