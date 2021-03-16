@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- CSS only-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel ="stylesheet" href = "css/format.css">
+</head>
+<body>
+    
+
+   <!-- CDN: Content Delivery Network -->
+   <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="shadow-lg p-3 bg-white rounded card card0 border-0">
+        <div class="row d-flex">
+            <div class="col">
+                <div class="card2 card border-0 px-4 py-5">
+                    <div class ="row" >
+                        <center>
+                            <img src="images/logo.png" class ="logo2" alt="Indra" >
+                            <img src="images/logoMinsait.png" class ="logo3" alt="minsait" >
+                        </center>
+                    </div>
+                    <br>
+                    <div class="row px-3 mb-4">
+                        <div class="line"></div> <small class="signIn text-center">Sign in</small>
+                        <div class="line"></div>
+                    </div>
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form group"> <label class="mb">
+                                    <h6 class="mb-0 text-sm">Email Address</h6>
+                                    </label> <input class="shadow p-3 mb-3 bg-white rounded" type="email" name="email" placeholder="Enter a valid email address" required ="required">
+                                </div>
+                            </div>
+                            <div class = "col">
+                                <div class="form group"> <label class="mb-1">
+                                    <h6 class="mb-0 text-sm">CURP</h6>
+                                    </label> <input class="shadow p-3 mb-3 bg-white rounded" type="text" name="CURP" placeholder="Enter your CURP" maxlength="18"> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class ="col">
+                                <div class="form group"> <label class="mb-1">
+                                    <h6 class="mb-0 text-sm">Technical profile</h6>
+                                    </label> <input class="shadow p-3 mb-3 bg-white rounded" type="text" name="carreer" placeholder="what is your technical profile?">
+                                </div>
+                            </div>
+                            <div class ="col">
+                                <div class="form group"> <label class="mb-1">
+                                    <h6 class="mb-0 text-sm">Phone number</h6>
+                                    </label> <input class="shadow p-3 mb-3 bg-white rounded" maxlength="14" type="tel" name="phone number" placeholder="phone number "  pattern="[+]{1}[0-9]{11,14}"">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="mb-0 text-sm">Password</h6>
+                                    </label> <input class="shadow p-3 mb-4 bg-white rounded" type="password" name="password" placeholder="Enter a password">
+                                </div>
+                                <div class="col">
+                                    <h6 class="mb-0 text-sm">Confirm password</h6>
+                                    </label> <input id="show_hide_password"  class="shadow p-3 mb-4 bg-white rounded" type="password" name="password" placeholder="Confirm your password">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form group form-check">
+                            <input type="checkbox" class = "form-check-input" id="PrivacyCheck" >
+                            <label class="form-check-label" for="PrivacyCheck"></label> I accept the privacy <a class="termsText" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"> terms and conditions</a>
+                        </div>
+                    </form>
+                    <div class="row px-3 mb-4">
+                        <div class="custom-control custom-checkbox custom-control-inline"> 
+                        </div> 
+                        <!--<a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>-->
+                    </div>
+                    <div>
+                        <a href="succed.html">
+                            <button type="submit" class="btn btn-blue text-center" >submit</button>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue py-4">
+            <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. All rights reserved.</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL-->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">General terms, conditions and privacy policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   <h4>1. GENERAL TERMS AND CONDITIONS</h4>
+                   <span >
+                    These general conditions regulate accessing and using the Indra website www.indracompany.com that Indra makes available at no cost to its Internet users. Access to the same implies acceptance without reservations. The use of certain services offered on this website will also be governed by the specific terms and conditions stipulated in each case, which will be considered accepted by simply using such services.<br>
+                    <br>
+                    Indra reserves the right to modify and update, at any time and without advance notice, the information contained in its website, as well as its configuration, presentation and access conditions. <br>
+                    <br>
+                    Indra does not guarantee that there will not be any interruptions or errors in accessing the website, in its contents or that the Website will remain updated, although it will make its best effort to prevent, correct or update these situations, should they occur.<br>
+                    <br>
+                    Both the access to this website as well as the use made of the information contained therein are the sole responsibility of the user. Indra will not be held liable for any consequence, damage or prejudice that may arise of said access or use of the information. Indra shall not be held liable for any security errors that may occur or any damages that may be incurred by the user's computer system or the files or documents stored in the same, as a result of viruses on the user's computer used to connect to the website's services and contents, of poor browser performance or of the use of outdated versions of the same.<br>
+                    <br>
+                    Indra will not be held liable for any issue resulting of links to or contents of third-party websites referred to by its own website, and does not guarantee the absence of any viruses or other elements in these that could affect the user's computer system, documents or files, excluding any liability for damages of any type whatsoever caused to the user for this reason.<br>
+                   </span>
+                   <br>
+                   <br>
+                   <h4>2. PRIVACY POLICY</h4>
+                   <span>
+                    Indra Sistemas S.A. will provide prior and appropriate information so that users may expressly grant their consent to the company to process their data and manage the request and provide information about the products and services provided by the Indra group. In such cases, the data are considered to be essential and will only be used for the purpose indicated in the specific clause together with the data collection form. Data will only be retained for the time necessary to fulfill the purpose for which they are collected. Therefore, if they are not provided, no information about these products or services can be sent.<br>  
+                    <br>
+                    In the processing, personal data may be transferred to other companies in the Indra group. You can view the complete list of the companies in this group through the following link: https://www.indracompany.com/en/companies-belonging-indra-sistemas-group. When required to transfer data to a third country that does not guarantee an appropriate level of data protection, Indra guarantees the adoption of security measures recognized in international standards. In any case, Indra guarantees that it will adopt security measures to safeguard the confidentiality of the personal data provided by users.<br>
+                    <br>
+                    Pursuant to Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, users may revoke consent given and exercise their rights of access, rectification, erasure, cancellation, objection, limitation of processing and data portability under the terms and conditions specified in the data protection legislation by sending an email to: dpo@indra.es, indicating which channel or subject you want to cancel; or by writing to: Data Protection and Privacy Office-Indra Sistemas S.A., Avenida de Bruselas, 33-35, Alcobendas, 28108 Madrid. Similarly, users may lodge any claims that they consider appropriate with the supervisory authority through the following link: <a href="http://www.aepd.es/."> http://www.aepd.es/.</a><br>
+                   </span>
+                   <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue text-center" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+    
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

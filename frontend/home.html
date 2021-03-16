@@ -9,9 +9,30 @@
     <!-- CSS only-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="css/fontawesome.css">
-    <link rel ="stylesheet" href = "css/home.css">
+    <link rel ="stylesheet" href = "css/format.css">
     <link rel ="stylesheet" href = "css/all.css">
     <link rel ="stylesheet" href = "css/fontawesome.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/jquery.dataTables.min.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+ 
+	<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable( {
+        ajax:           "2500.txt",
+        deferRender:    true,
+        scrollY:        200,
+        scrollCollapse: true,
+        scroller:       true
+    } );
+} );
+	</script>
+
 </head>
 <body>
     <!-- CDN: Content Delivery Network -->
@@ -26,93 +47,38 @@
                                 <img src="images/logoMinsait.png" class ="logo3" alt="minsait" >
                             </div>
                             <div class="col RegisterAccountBox">
-                                <a href="template.html">
-                                    <button type="submit" class="btn btn-blue1 text-center " >Register an account</button>
+                                <a href="registerUser.html">
+                                    <button type="submit" class="btn btn-blue1 text-center btn btn-blue text-center " >Register an account</button>
                                 </a>
                             </div>
                         </div>
+                        <div class="largeLine"></div>
                         <br>
                         <div class="row">
-                                aqui va la barra de busqueda
-
-                        </div>
-                        <br>
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <table class="table table-bordered table-striped mb-0">
+                            <table id="example" class="display nowrap" style="width:100%">
                                 <thead>
                                     <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">Curp</th>
-                                    <th scope="col">Carreer</th>
-                                    <th scope="col">Results</th>
-                                    <th scope="col">Clear</th>
+                                        <th>Name</th>
+                                        <th>Age</th>
+                                        <th>Curp</th>
+                                        <th>Carrer</th>
+                                        <th>Results</th>
+                                        <th>Clear</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                    <td>Jose leonardo Perez Gonzalez</td>
-                                    <td>19</td>
-                                    <td>PEGL010630HMSRNNA9</td>
-                                    <td>Ingenieria en tecnologias computacionales </td>
-                                    <td><a><i class="fab fa-apple"></i>pdf icon</a></td>
-                                    <td>clear icon</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Andrick Jesus Perez Landa</td>
-                                    <td>20</td>
-                                    <td>CURPDELLOLLOZ</td>
-                                    <td>Ingenieria en tecnologias computacionales</td>
-                                    <td>pdf icon</td>
-                                    <td>clear icon</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>carrera</td>
-                                    <td>pdf icon</td>
-                                    <td>clear icon</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>carrera</td>
-                                    <td>pdf icon</td>
-                                    <td>clear icon</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>carrera</td>
-                                    <td>pdf icon</td>
-                                    <td>clear icon</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>carrera</td>
-                                    <td>pdf icon</td>
-                                    <td>clear icon</td>
-                                    </tr>
-                                </tbody>
                             </table>
+        
                         </div>
-                        <br>
+
                         <br>
                         <div class="row">
                             <div class="col">
-                                <a href="template.html">
+                                <a href="Pruebas tabla.html">
                                     <button type="submit" class="btn btn-blue text-center " >applicants in queue</button>
                                 </a>
                             </div>
                             <div class="col RegisterAccountBox">
-                                <a href="template.html">
-                                    <button type="submit" class="btn btn-blue text-center " >Export to .csv</button>
-                                </a>
+                                    <button type="submit" class="btn btn-blue text-center " data-bs-toggle="modal" data-bs-target="#exampleModalScrollable" >Export to .csv</button>
                             </div>
                         </div>
                     </div>
@@ -120,9 +86,56 @@
             </div>
         <div class="bg-blue py-4">
             <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. All rights reserved.</small>
+                <center>
+                    <div class="col text-center"><a class="cerrarSesion " href="login.html">cerrar sesion</a></div>
+                </center>
             </div>
         </div>
     </div>
+
+<!-- MODAL-->
+<!-- Modal de descarga en .CSV-->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <h5>Download database in .csv format</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-blue text-center" data-bs-dismiss="modal"><i class="fas fa-download"></i>           Download</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal de resultados del aplicante en CSV-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-blue text-center" data-bs-dismiss="modal"><i class="fas fa-download"></i>           Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal de eliminar registro-->
+
+
+
 </div>
 
     <!-- JavaScript Bundle with Popper -->

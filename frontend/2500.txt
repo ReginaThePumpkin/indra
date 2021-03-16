@@ -1,0 +1,12 @@
+{
+  	"aaData": [
+    		[
+     	 		"Andrick Jesus Perez Landa",
+      			"20",
+      			"PELA123456789",
+      			"Ingeniero en tecnologias computacionales",
+      			"<button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i></button>",
+			"<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>"
+    		]
+	]
+}
