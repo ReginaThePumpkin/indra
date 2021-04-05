@@ -1,59 +1,109 @@
 //var mysql = require('mysql'); // Declarando dependencia del modulo mysql
 var config = require('../helpers/config'); // Variable que contiene la ruta del config.js
-//var conexion = mysql.createConnection(config); // Crear la conexion con los datos almacenados en config
+var nodemailer = require('nodemailer');
 var pool = config.pool;
 
-// Creando y exportando el metodo para visualizar la listas de los usuarios en la base de datos
-module.exports.usersList = (request, response) => {
-    var sql = "SELECT * FROM users"; // Declarando query a realizar (mostrar toda la tabla de user)
+/**
+ * [Get all users function]
+ * @return response/error
+ */ 
+module.exports.getUsers = (request, response) => {
+    var sql = "SELECT * FROM users LEFT JOIN rol ON users.id = rol.id"; 
 
-    // Ejecuntado dicha query
     pool.query(sql, (error, results, fields) => {
-        if (error) // Si encuentra algun error, envia el error
-            response.send(error);
-        else // En caso contrario obtiene la lista de resultados en formato JSON
-            response.json(results);
+        if (error) { response.send(error); }
+        else { response.json(results); }
     });
 }
 
-// Creando y exportando el metodo para obtener un usuario mediante su ID
+/**
+ * [Get user by id function]
+ * @param  id
+ * @return response/error
+ */ 
 module.exports.getUser = (request, response) => {
-    var sql = "SELECT * FROM users WHERE id = ?"; // Declarando query a realizar (mostrar un usuario mediante su ID)
 
-    // Ejecuntado dicha query
-    pool.query(sql, [request.params.idUser], (error, results, fields) => {
-        if (error) // Si encuentra algun error, envia el error
-            response.send(error);
-        else // En caso contrario obtiene la lista de resultados en formato JSON
-            response.json(results);
+    var sql = "SELECT users.name, users.lastname, rol.rol, users.email FROM users LEFT JOIN rol ON users.id = rol.id WHERE users.id = ?";
+
+    pool.query(sql, [request.params.id], (error, results, fields) => {
+        if (error) { response.send(error); }
+        else { response.json(results); }
     });
 }
 
-// Creando y exportando el metodo para insertar un usuario
+/**
+ * [Insert user function]
+* @param  id
+* @param  name 
+* @param  lastname
+* @param  rol_id
+* @param  email
+* @param  password
+* @return response/error
+ */
 module.exports.insertUser = (request, response) => {
-    var user = request.body; // Esta variable contendra los datos del usuario en formato JSON (enviado por el cliente)
+    var user = request.body;
 
-    var sql = "INSERT INTO users SET ?"; // Declarando query a realizar (insertar un usuario)
+    var sql = "INSERT INTO users SET ?";
 
-    // Ejecuntado dicha query
-    pool.query(sql, [user], (error, results, fields) => {
-        if (error) // Si encuentra algun error, envia el error
-        {
-            var sendJson = '{"done":false, "errno":' + error.errno + ', "message":"' + error.sqlMessage + '"}';
-            response.send(sendJson);
-        } else {// En caso contrario obtiene la lista de resultados en formato JSON
-            var sendJson = '{"done":true, "errno":0, "message":"Usuario registrado correctamente."}';
-            response.send(sendJson);
+    pool.query(sql, [user], (_error, _results, _fields) => {
+        if (_error){
+            var sendJson = '{"done":false, "errno":' + _error.errno + ', "message":"' + _error.sqlMessage + '"}';
+            response.send(JSON.parse(sendJson));
+        }
+        else {
+            var sendJson = '{"done":true, "errno":0, "message":"User registered successfuly."}';
+            response.send(JSON.parse(sendJson));
         }
     });
 }
 
-// Creando y exportando el metodo para verificar si el usuario se logueo correctamente
+/**
+ * [Login function]
+ * @param  email
+ * @param  password
+ * @return response/error
+ */ 
 module.exports.loginUser = (request, response) => {
-    var user = request.body; // Esta variable contendra los datos de login del usuario en formato JSON (enviado por el cliente)
+    var user = request.body; 
 
     var sql1 = "SELECT * FROM users WHERE email='" + user.email + "'";
 
+    pool.query(sql1, [user], (_error, _results, _fields) => {
+        if (error1){ response.send(_error1); } //Server error
+        else {
+            if (results1.length > 0){
+
+                var sql2 = "SELECT * FROM users WHERE email='" + user.email + "' AND password = '" + user.password + "'";
+
+                pool.query(sql2, [user], (__error, __results, __fields) => {
+                    if (__error){ response.send(__error) } //Server error
+                    else {
+                        if (results2.length > 0){
+                            //Success
+                            var sendJson = '{"status":true, "errno":0, "messageInSpanish":"Usuario encontrado.", "messageInEnglish":"User found.", "name":"'+__results[0].name.split(' ')[0]+'"}';
+                            response.send(JSON.parse(sendJson));
+                        } else {
+                            //Failure
+                            var sendJson = '{"status":false, "errno":19, "messageInSpanish":"Usuario o contraseña incorecta, vuelve a intentarlo.", "messageInEnglish":"Incorrect email or password, please try again."}';
+                            response.send(JSON.parse(sendJson));
+                        }
+                    }
+                });
+            } else {
+                var sendJson = '{"status":false, "errno":18, "message":"The user \''+ user.username + '\' does not exist. Please try again"}';
+                response.send(sendJson);
+            }
+        }
+    });
+}
+
+module.exports.passRecover = (request, response) => {
+    var user = request.body; // Esta variable contendra los datos de login del usuario en formato JSON (enviado por el cliente)
+
+    var sql1 = "SELECT * FROM users WHERE email='" + user.email + "'";//si esta cosa está vacía, ese email no existe
+
+    //esta es de mi login, namas la vo a adaptar
     // Ejecuntado query1
     pool.query(sql1, [user], (error1, results1, fields1) => {
         if (error1) // Si encuentra algun error, envia el error
