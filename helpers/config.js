@@ -10,10 +10,10 @@ var mysql = require('mysql');
 })*/
 var pool = mysql.createPool({
     connectionLimit: 100,
-    host: 'localhost',
+    host: 'indra.crnfsnzlnaf7.us-east-1.rds.amazonaws.com',
     port: '3306',
     user: 'root',
-    password: '',
+    password: 'tacosdepapaya',
     database: 'indra'
 })
 
