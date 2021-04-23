@@ -70,16 +70,16 @@ module.exports.loginUser = (request, response) => {
     var sql1 = "SELECT * FROM users WHERE email='" + user.email + "'";
 
     pool.query(sql1, [user], (_error, _results, _fields) => {
-        if (error1){ response.send(_error1); } //Server error
+        if (_error){ response.send(_error); } //Server error
         else {
-            if (results1.length > 0){
+            if (_results.length > 0){
 
                 var sql2 = "SELECT * FROM users WHERE email='" + user.email + "' AND password = '" + user.password + "'";
 
                 pool.query(sql2, [user], (__error, __results, __fields) => {
                     if (__error){ response.send(__error) } //Server error
                     else {
-                        if (results2.length > 0){
+                        if (__results.length > 0){
                             //Success
                             var sendJson = '{"status":true, "errno":0, "messageInSpanish":"Usuario encontrado.", "messageInEnglish":"User found.", "name":"'+__results[0].name.split(' ')[0]+'"}';
                             response.send(JSON.parse(sendJson));
@@ -105,21 +105,21 @@ module.exports.passRecover = (request, response) => {
 
     //esta es de mi login, namas la vo a adaptar
     // Ejecuntado query1
-    pool.query(sql1, [user], (error1, results1, fields1) => {
-        if (error1) // Si encuentra algun error, envia el error
+    pool.query(sql1, [user], (_error, _results, fields1) => {
+        if (_error) // Si encuentra algun error, envia el error
         {
-            response.send(error1);
+            response.send(_error);
         } else { // En caso contrario obtiene la lista de resultados en formato JSON
-            if (results1.length > 0)
+            if (_results.length > 0)
             {
                 var sql2 = "SELECT * FROM users WHERE email='" + user.email + "' AND password = '" + user.password + "'";
 
-                pool.query(sql2, [user], (error2, results2, fields2) => {
-                    if (error2)
+                pool.query(sql2, [user], (__error, __results, fields2) => {
+                    if (__error)
                     {
-                        response.send(error2)
+                        response.send(__error)
                     } else {
-                        if (results2.length > 0)
+                        if (__results.length > 0)
                         {
                             var sendJson = '{"done":true, "errno":0, "message":"El usuario ingreso correctamente."}';
                             response.send(sendJson);
