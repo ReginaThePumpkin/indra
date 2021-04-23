@@ -9,7 +9,7 @@ router.get('/users', UScontroller.getUsers);
 router.get('/users/:id', UScontroller.getUser);
 
 router.post('/register-user', UScontroller.insertUser);
-router.post('/login-user', UScontroller.loginUser); 
+router.post('/user-login', UScontroller.loginUser); 
 router.post('/recovery:email', UScontroller.passRecover);
 
 // -> CANDIDATES
