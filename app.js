@@ -1,8 +1,8 @@
 // Declarando dependencias de diferentes modulos
 var express = require('express');
 var bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const config = require('./config/jwt'); // Un archivo js no requiere la extension
+//const jwt = require('jsonwebtoken');
+//const config = require('./config/jwt'); // Un archivo js no requiere la extension
 var path = require('path');
 var cors = require('cors');
 

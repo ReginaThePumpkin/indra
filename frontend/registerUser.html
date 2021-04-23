@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- CSS only-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel ="stylesheet" href = "css/format.css">
+</head>
+<body>
+    <!-- CDN: Content Delivery Network -->
+	<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="shadow-lg p-3 bg-white rounded card card0 border-0">
+        <div class="row d-flex">
+            <div class="col">
+                <div class="card2 card border-0 px-4 py-5">
+                    <div class ="row" >
+                        <div class="col">
+                            <a href="home.html"> <img src="images/logo.png" class ="logo2" alt="Indra" ></a>
+                            <a href="home.html"><img src="images/logoMinsait.png" class ="logo3" alt="minsait" ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form>
+            <div class="row">
+                <div class = "col">
+                    <div class="form group"> <label class="mb-1">
+                        <h6 class="mb-0 text-sm">CURP</h6>
+                        </label> <input class="shadow p-3 mb-3 bg-white rounded" type="text" name="CURP" placeholder="Enter your CURP" maxlength="18"> 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form group"> <label class="mb">
+                        <h6 class="mb-0 text-sm">Email Address</h6>
+                        </label> <input class="shadow p-3 mb-3 bg-white rounded" type="email" name="email" placeholder="Enter a valid email address" required ="required">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <h6 class="mb-0 text-sm">Password</h6>
+                        </label> <input class="shadow p-3 mb-4 bg-white rounded" type="password" name="password" placeholder="Enter a password">
+                    </div>
+                    <div class="col">
+                        <h6 class="mb-0 text-sm">Confirm password</h6>
+                        </label> <input id="show_hide_password"  class="shadow p-3 mb-4 bg-white rounded" type="password" name="password" placeholder="Confirm your password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class ="col">
+                    <div class="form group"> <label class="mb-1">
+                        <h6 class="mb-0 text-sm">Phone number</h6>
+                        </label> <input class="shadow p-3 mb-3 bg-white rounded" maxlength="14" type="tel" name="phone number" placeholder="phone number "  pattern="[+]{1}[0-9]{11,14}"">
+                    </div>
+                </div>
+                <div class ="col">
+                    <div class="form group">
+                        <h6 class="mb-2 text-sm">Role</h6>
+                        <div class="search_categories ">
+                            <div class="select ">
+                               <select name="search_categories" id="search_categories" class="select drop_downBox shadow p-3 mb-3 bg-white rounded ">
+                                  <option value="1" selected="selected">Choose...</option>
+                                  <option value="2">Panel administrator</option>
+                                  <option value="3">Human resources personal</option>
+                                </select>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </form>
+        <div class="row">
+
+            <div class="col RegisterAccountBox">
+                <a href="home.html">
+                    <button type="submit" class="btn btn-blue text-center " >Register</button>
+                </a>
+            </div>
+        </div>
+
+        </div>
+        <div class="bg-blue py-4">
+            <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. All rights reserved.</small>
+                </div>
+        </div>
+    </div>
+</div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
