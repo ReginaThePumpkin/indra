@@ -26,8 +26,9 @@ module.exports.getCandidates = (request, response) => {
     pool.query(sql, (error, results, fields) => {
         if (error) { response.send(error); }
         else { 
-            var _res = []
-            var n = results.length
+            var _res = [];
+            var _results = {};
+            var n = results.length;
             for(var i=0; i<n; i++){
                 var theResults = []
                 theResults.push(results[i].name);
@@ -38,7 +39,8 @@ module.exports.getCandidates = (request, response) => {
                 theResults.push("<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>");
                 _res.push(theResults);
             }
-            response.json(_res); 
+            _results.aaData = _res;
+            response.json(_results); 
         }
     });
 }
