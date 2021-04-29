@@ -17,6 +17,33 @@ module.exports.getCandidates = (request, response) => {
 }
 
 /**
+ * [Get candidates datatable]
+ * @return response/error
+ */ 
+ module.exports.getCandidatesDatatable = (request, response) => {
+    var sql = "SELECT * FROM candidate"; 
+
+    pool.query(sql, (error, results, fields) => {
+        if (error) { response.send(error); }
+        else { 
+            var _res = []
+            var n = results.length
+            for(var i=0; i<n; i++){
+                var theResults = []
+                theResults.push(results[i].name);
+                theResults.push(results[i].id);
+                theResults.push(results[i].curp);
+                theResults.push(results[i].career);
+                theResults.push("<button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i></button>");
+                theResults.push("<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>");
+                _res.push(theResults);
+            }
+            response.json(_res); 
+        }
+    });
+}
+
+/**
  * [Get candidate by id function]
  * @param  id
  * @return response/error

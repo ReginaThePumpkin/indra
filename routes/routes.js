@@ -17,6 +17,7 @@ var candidateController = require('../controllers/candidates.controller');
 
 /* Routes for candidate.controller.js */
 router.get('/candidates', candidateController.getCandidates);
+router.get('/candidates-datatable', candidateController.getCandidatesDatatable);
 router.get('/candidates/:id', candidateController.getCandidate);
 
 router.post('/register-candidate', candidateController.insertCandidate);
