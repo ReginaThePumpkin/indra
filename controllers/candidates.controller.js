@@ -35,7 +35,7 @@ module.exports.getCandidates = (request, response) => {
                 theResults.age = results[i].id;
                 theResults.curp = results[i].curp;
                 theResults.career = results[i].career;
-                theResults.pdf = "<button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i><a href='./test.pdf'></a></button>";
+                theResults.pdf = "<a href='test.pdf'><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i></button></a>";
                 theResults.clear = "<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>";
                 _res.push(theResults);
             }
