@@ -42,6 +42,7 @@ module.exports.getCandidates = (request, response) => {
             _results.draw = 1;
             _results.recordsTotal = n;
             _results.recordsFiltered = n;
+            _results.buttons = ['copy', 'csv', 'excel', 'pdf', 'print'];
             _results.data = _res;
             response.json(_results); 
         }
