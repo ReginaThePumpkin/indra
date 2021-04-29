@@ -2,7 +2,6 @@
 var config = require('../helpers/config'); // Variable que contiene la ruta del config.js
 var nodemailer = require('nodemailer');
 var pool = config.pool;
-const bcrypt = require("bcrypt");
 
 /**
  * [Get all users function]
