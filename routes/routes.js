@@ -20,6 +20,7 @@ router.get('/candidates', candidateController.getCandidates);
 router.get('/candidates/:id', candidateController.getCandidate);
 
 router.post('/register-candidate', candidateController.insertCandidate);
+router.post('/register-score', candidateController.insertScore);
 router.post('/candidate-login', candidateController.loginCandidate); 
 router.post('/candidate-recovery:email', candidateController.passRecover);
 
