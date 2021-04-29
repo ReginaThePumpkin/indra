@@ -60,39 +60,6 @@ module.exports.insertUser = (request, response) => {
 }
 
 /**
- * [Insert user function]
-* @param  id
-* @param  name 
-* @param  lastname
-* @param  rol_id
-* @param  email
-* @param  password
-* @return response/error
- */
-/*module.exports.insertScores = (request, response) => {
-    var user = request.body;
-
-    var sql = "INSERT INTO users SET ?";
-
-    pool.query(sql, [user], (_error, _results, _fields) => {
-        if (_error){
-            var sendJson = '{"done":false, "errno":' + _error.errno + ', "message":"' + _error.sqlMessage + '"}';
-            response.send(JSON.parse(sendJson));
-        }
-        else {
-            var sendJson = '{"done":true, "errno":0, "message":"User registered successfuly."}';
-            response.send(JSON.parse(sendJson));
-        }
-    });
-}*/
-module.exports.insertScores = (request, response) => {
-    var scores = request.body;
-    var sendJson = '{"done":true, "errno":0, "message":"Datos enviados correctamente."}';
-    response.send(JSON.parse(sendJson));
-}
-
-
-/**
  * [Login function]
  * @param  email
  * @param  password
