@@ -91,7 +91,7 @@ module.exports.loginUser = (request, response) => {
                     }
                 });
             } else {
-                var sendJson = '{"status":false, "errno":18, "message":"The user \''+ user.username + '\' does not exist. Please try again"}';
+                var sendJson = '{"status":false, "errno":19, "messageInSpanish":"Usuario o contraseña incorecta, vuelve a intentarlo.", "messageInEnglish":"Incorrect email or password, please try again."}';
                 response.send(sendJson);
             }
         }
