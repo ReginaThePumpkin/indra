@@ -30,16 +30,19 @@ module.exports.getCandidates = (request, response) => {
             var _results = {};
             var n = results.length;
             for(var i=0; i<n; i++){
-                var theResults = []
-                theResults.push(results[i].name);
-                theResults.push(results[i].id);
-                theResults.push(results[i].curp);
-                theResults.push(results[i].career);
-                theResults.push("<button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i></button>");
-                theResults.push("<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>");
+                var theResults = {}
+                theResults.name = results[i].name;
+                theResults.age = results[i].id;
+                theResults.curp = results[i].curp;
+                theResults.career = results[i].career;
+                theResults.pdf = "<button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i></button>";
+                theResults.clear = "<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>";
                 _res.push(theResults);
             }
-            _results.aaData = _res;
+            _results.draw = 1;
+            _results.recordsTotal = n;
+            _results.recordsFiltered = n;
+            _results.data = _res;
             response.json(_results); 
         }
     });
