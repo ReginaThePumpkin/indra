@@ -155,7 +155,7 @@ module.exports.insertCandidate = (request, response) => {
 }*/
 module.exports.insertScore = (request, response) => {
     var scores = {};
-    scores.email = request.body.email;
+    scores.email = request.body.results.email;
     scores.score = JSON.stringify(request.body);
 
     var sql = "INSERT INTO scores SET ?";
