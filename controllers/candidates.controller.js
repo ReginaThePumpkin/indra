@@ -35,8 +35,9 @@ module.exports.getCandidates = (request, response) => {
                 theResults.age = results[i].id;
                 theResults.curp = results[i].curp;
                 theResults.career = results[i].career;
-                theResults.pdf = "<a href='test.pdf'><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='far fa-file-pdf'></i></button></a>";
-                theResults.clear = "<center><button  class='btn btn-blue text-center' data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button></center>";
+                theResults.pdf = "<button "+"onclick='getReport("+results[i].id.toString()+")"+" class='btn btn-blue text-center'><i class='far fa-file-pdf'></i></button>";
+                theResults.info = "<button "+"onclick='moreInfo("+results[i].id.toString()+")"+" class='btn btn-blue text-center'><i class='fas fa-file-alt'></i></button>";
+                theResults.clear = "<button"+"onclick='deleteApplicant("+results[i].id.toString()+")"+"class='btn btn-danger text-center'data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button>";
                 _res.push(theResults);
             }
             _results.draw = 1;
@@ -70,6 +71,7 @@ module.exports.getCandidates = (request, response) => {
                 theResults.career = results[i].career;
                 theResults.email = results[i].email;
                 theResults.phone = results[i].phone;
+                theResults.info = "<button "+"onclick='moreInfo("+results[i].id.toString()+")"+" class='btn btn-blue text-center'><i class='fas fa-file-alt'></i></button>";
                 _res.push(theResults);
             }
             _results.draw = 1;
@@ -151,9 +153,22 @@ module.exports.insertCandidate = (request, response) => {
     });
 }*/
 module.exports.insertScore = (request, response) => {
-    var scores = request.body;
-    var sendJson = '{"done":true, "errno":0, "message":"Datos enviados correctamente."}';
-    response.send(JSON.parse(sendJson));
+    var scores = {};
+    scores.email = request.body.email;
+    scores.score = JSON.stringify(request.body);
+
+    var sql = "INSERT INTO scores SET ?";
+
+    pool.query(sql, [scores], (_error, _results, _fields) => {
+        if (_error){
+            var sendJson = '{"done":true, "errno":0, "message":"Datos enviados correctamente."}';
+            response.send(JSON.parse(sendJson));
+        }
+        else {
+            var sendJson = '{"done":true, "errno":0, "message":"Datos enviados correctamente."}';
+            response.send(JSON.parse(sendJson));
+        }
+    });
 }
 
 /**
