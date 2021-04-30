@@ -38,7 +38,7 @@ module.exports.getCandidates = (request, response) => {
                 theResults.pdf =  "<button class='btn btn-blue text-center' " + "onclick='getReport("+ results[i].id.toString() +")'><i class='far fa-file-pdf'></i></button>";
                 theResults.info = "<button class='btn btn-blue text-center' " + "onclick='moreInfo("+ results[i].id.toString() +")'><i class='fas fa-file-alt'></i></button>";
                 // theResults.clear = "<button"+"onclick='deleteApplicant("+results[i].id.toString()+")"+"class='btn btn-danger text-center'data-toggle='modal' data-target='#exampleModalCenter'><i class='fas fa-trash-alt'></i></button>";
-                theResults.clear = "<button class='btn btn-blue text-center' data-bs-toggle='modal' data-bs-target='#del-app-modal' ><i class='fas fa-trash'></i></button>";
+                theResults.clear = "<button class='btn btn-blue text-center' " + "onclick='deleteCand("+ results[i].id.toString() +")'><i class='fas fa-trash-alt'></i></button>";
                 _res.push(theResults);
             }
             _results.draw = 1;
