@@ -20,6 +20,8 @@ router.get('/candidates', candidateController.getCandidates);
 router.get('/candidates-datatable', candidateController.getCandidatesDatatable);
 router.get('/candidates-queue-datatable', candidateController.getCandidatesInQueueDatatable);
 router.get('/candidates/:id', candidateController.getCandidate);
+router.get('/delete-candidate/:id', candidateController.deleteCandidate);
+router.get('/candidate-score/:email', candidateController.getScore);
 
 router.post('/register-candidate', candidateController.insertCandidate);
 router.post('/register-score', candidateController.insertScore);

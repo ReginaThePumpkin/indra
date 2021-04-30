@@ -101,6 +101,36 @@ module.exports.getCandidate = (request, response) => {
 }
 
 /**
+ * [Get score by email function]
+ * @param  email
+ * @return response/error
+ */ 
+ module.exports.getScore = (request, response) => {
+
+    var sql = "SELECT * FROM scores WHERE email = ?";
+
+    pool.query(sql, [request.params.email], (error, results, fields) => {
+        if (error) { response.send(error); }
+        else { response.json(results); }
+    });
+}
+
+/**
+ * [Archivate application]
+ * @param  id
+ * @return response/error
+ */ 
+ module.exports.deleteCandidate = (request, response) => {
+
+    var sql = "UPDATE candidates SET archived = 2 WHERE id = ?";
+
+    pool.query(sql, [request.params.id], (error, results, fields) => {
+        if (error) { response.send(error); }
+        else { response.json('{"done":true, "errno":0, "message":"Candidate removed successfully."}'); }
+    });
+}
+
+/**
  * [Insert candidate function]
 * @param  id
 * @param  name 
